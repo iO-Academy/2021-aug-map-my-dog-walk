@@ -1,6 +1,11 @@
 
+
+
 function routes(app){
-    app.get('/', )
+
+    app.get('/', (request, response) =>{
+        response.render('Home')
+    })
 
 }
 

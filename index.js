@@ -1,6 +1,6 @@
 const express = require('express')
-const expressHandlebars = require('express-handlebars')
 const router = require("./config/routes");
+const expressHandlebars = require("express-handlebars");
 const port = 3000
 
 app = express()
