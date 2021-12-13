@@ -1,0 +1,19 @@
+[{
+  "_id": {
+    "$oid": "61b72b61ffb6b77cc07a5117"
+  },
+  "name": "Sophie's Woods Walk",
+  "length": 30,
+  "startInstructions": "Go to the wall and jump over it",
+  "difficulty": 3,
+  "markersArray": [
+    {
+      "latitude": {
+        "$numberDecimal": "-0.045"
+      },
+      "longitude": {
+        "$numberDecimal": "1.235623"
+      }
+    }
+  ]
+}]
