@@ -14,6 +14,4 @@ async function myMap() {
             position: {lat: parseInt(marker.markersArray.latitude.$numberDecimal), lng: parseInt(marker.markersArray.longitude.$numberDecimal)},
             map,
             title: marker.name
-        })
-    })
 }

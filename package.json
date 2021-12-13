@@ -2,7 +2,6 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.12.11",
     "express": "^4.17.1",
-    "express-handlebars": "^6.0.2",
     "mongodb": "^4.2.1"
   }
 }
