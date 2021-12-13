@@ -1,5 +1,7 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
+const MongoClient = require('mongodb').MongoClient;
+const mongoConnection = 'mongodb://root:password@localhost:27017';
 const router = require("./config/routes");
 const port = 3000
 
