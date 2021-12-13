@@ -8,12 +8,8 @@
   "difficulty": 3,
   "markersArray": [
     {
-      "latitude": {
-        "$numberDecimal": "-0.045"
-      },
-      "longitude": {
-        "$numberDecimal": "1.235623"
-      }
+      "lat": "-0.045",
+      "lng": "1.235623"
     }
   ]
 }]
