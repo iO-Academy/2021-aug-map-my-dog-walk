@@ -7,12 +7,13 @@ async function myMap() {
 
     let response =  await fetch('/markers');
     let markers = await response.json();
+    console.log(markers);
 
     markers.forEach(function (marker) {
         new google.maps.Marker({
-            position: {lat: parseInt(marker.latitude.$numberDecimal), lng: parseInt(marker.longitude.$numberDecimal)},
+            position: {lat: parseInt(marker.markersArray.latitude.$numberDecimal), lng: parseInt(marker.markersArray.longitude.$numberDecimal)},
             map,
-            title: "Hello World!"
+            title: marker.name
         })
     })
 }
