@@ -1,23 +1,19 @@
 <div class="vh-100">
-    <div class="container p-3">
-        <h1 class="text-center">Canine Compass</h1>
-    </div>
-    <div class="container-fluid h-75">
-        <div class="row h-100">
-            <div class="col-3 h-100">
-                <div class="h-100">
-                    <div class="sideBar h-50 d-flex flex-column justify-content-between">
-                        <div>Map name</div>
-                        <div>Distance/time: {{data.distance}}</div>
-                        <div>
-                            <h2>Further walk info</h2>
-                            <p>text here</p>
-                        </div>
+    <h1 class="text-center p-3">Canine Compass</h1>
+    <div class="container-lg h-75">
+        <div class="row h-100 gx-2">
+            <div class="col-3 h-100 border border-secondary border-3">
+                <div class="sideBar h-50 d-flex flex-column justify-content-between">
+                    <div>Map name</div>
+                    <div>Distance/time: {{data.distance}}</div>
+                    <div>
+                        <h2>Further walk info</h2>
+                        <p>text here</p>
                     </div>
                 </div>
             </div>
             <div class="col-9 h-100">
-                <div id="map" class="w-100 h-100"></div>
+                <div id="map" class="w-100 h-100 border border-secondary border-3"></div>
             </div>
         </div>
     </div>
