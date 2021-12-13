@@ -1,6 +1,7 @@
+
 const HomePageController = require("../src/Controllers/HomePageController");
 
-function routes(app){
+function routes(app) {
     app.get('/', HomePageController.renderHomePage)
 }
 
