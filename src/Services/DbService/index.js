@@ -8,5 +8,14 @@ async function connectToDb() {
     return collection;
 }
 
-module.exports.connectToDb = connectToDb();
+async function getAllStartMarkers(collection) {
+    const data = await collection.find({}).toArray();
+    let markers = [];
+    data.forEach(function (walk) {
+        markers.push(walk.markersArray[0]);
+    })
+    return markers;
+}
 
+module.exports.connectToDb = connectToDb;
+module.exports.getAllStartMarkers = getAllStartMarkers;
