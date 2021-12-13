@@ -1,4 +1,6 @@
-const {MongoClient} = require("mongodb");
+const MongoClient = require('mongodb').MongoClient;
+const mongoConnection = 'mongodb://root:password@localhost:27017';
+
 
 function routes(app){
     app.get('/', async (request, response) => {
