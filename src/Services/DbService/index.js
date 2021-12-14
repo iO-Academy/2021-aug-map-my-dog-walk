@@ -14,7 +14,7 @@ async function getAllStartMarkers(collection) {
     let markers = [];
     data.forEach(function (walk) {
         markers.push({"name" : walk.name,
-            "markersObject" : {"lat": walk.markersArray[0].lat, "lng": walk.markersArray[0].lng},
+            "markersObject" : walk.markersArray[0],
             "id": ObjectId(walk._id)
         });
     })
@@ -23,8 +23,7 @@ async function getAllStartMarkers(collection) {
 
 async function getDogWalkInfo(collection, id) {
     const o_id = ObjectId(id)
-    const data = await collection.findOne({'_id': o_id})
-    return data
+    return await collection.findOne({'_id': o_id})
 }
 
 module.exports.connectToDb = connectToDb;
