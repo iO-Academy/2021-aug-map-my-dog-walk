@@ -13,7 +13,8 @@ async function getAllStartMarkers(collection) {
     let markers = [];
     data.forEach(function (walk) {
         markers.push({"name" : walk.name,
-                        "markersArray" : walk.markersArray[0]});
+                      "markersObject" : {"lat": parseFloat(walk.markersArray[0].lat), "lng": parseFloat(walk.markersArray[0].lng)}
+        });
     })
     return markers;
 }
