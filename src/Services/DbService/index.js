@@ -21,12 +21,12 @@ async function getAllStartMarkers(collection) {
     return markers;
 }
 
-async function getStartMarkerByID(collection, id) {
+async function getDogWalkInfo(collection, id) {
     const o_id = ObjectId(id)
     const data = await collection.findOne({'_id': o_id})
-    return data.markersArray[0]
+    return data
 }
 
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
-module.exports.getStartMarkerByID = getStartMarkerByID;
+module.exports.getDogWalkInfo = getDogWalkInfo;

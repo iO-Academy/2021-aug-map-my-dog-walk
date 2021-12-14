@@ -6,11 +6,11 @@ async function getAllStartMarkersController(request, response) {
     response.json(markers);
 }
 
-async function getStartMarkerByIDController(request, response) {
+async function getDogWalkInfoController(request, response) {
     const collection = await DbService.connectToDb();
-    const marker = await DbService.getStartMarkerByID(collection, request.params.id);
-    response.json(marker);
+    const dogWalkInfo = await DbService.getDogWalkInfo(collection, request.params.id);
+    response.json(dogWalkInfo);
 }
 
 module.exports.getAllStartMarkersController = getAllStartMarkersController
-module.exports.getStartMarkerByIDController = getStartMarkerByIDController
+module.exports.getDogWalkInfoController = getDogWalkInfoController
