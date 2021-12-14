@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.12.11",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongodb": "^4.2.1"
   }

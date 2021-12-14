@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const mongoConnection = 'mongodb://root:password@localhost:27017';
+const ObjectId = require('mongodb').ObjectId;
 
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
@@ -12,7 +13,10 @@ async function getAllStartMarkers(collection) {
     const data = await collection.find({}).toArray();
     let markers = [];
     data.forEach(function (walk) {
-        markers.push(walk.markersArray[0]);
+        markers.push({"name" : walk.name,
+            "markersObject" : {"lat": parseFloat(walk.markersArray[0].lat), "lng": parseFloat(walk.markersArray[0].lng)},
+            "id": ObjectId(walk._id)
+        });
     })
     return markers;
 }
