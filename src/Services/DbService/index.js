@@ -14,7 +14,7 @@ async function getAllStartMarkers(collection) {
     let markers = [];
     data.forEach(function (walk) {
         markers.push({"name" : walk.name,
-            "markersObject" : {"lat": parseFloat(walk.markersArray[0].lat), "lng": parseFloat(walk.markersArray[0].lng)},
+            "markersObject" : {"lat": walk.markersArray[0].lat, "lng": walk.markersArray[0].lng},
             "id": ObjectId(walk._id)
         });
     })
