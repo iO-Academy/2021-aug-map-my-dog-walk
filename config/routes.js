@@ -1,9 +1,10 @@
 
-const HomePageController = require("../src/Controllers/HomePageController");
+const MarkerAPIController = require("../src/Controllers/MarkerAPIController");
+const AddNewRouteController = require("../src/Controllers/AddNewRouteController");
 
-
-function routes(app) {
-    app.get('/', HomePageController.renderHomePage)
+function routes(app){
+    app.get('/markers', MarkerAPIController.getAllStartMarkersController);
+    app.post('/', AddNewRouteController.addNewRouteController)
 }
 
-module.exports = routes
+module.exports = routes;
