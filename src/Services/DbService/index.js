@@ -1,5 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const mongoConnection = 'mongodb://root:password@localhost:27017';
+const ObjectId = require('mongodb').ObjectId
 
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
@@ -17,5 +18,12 @@ async function getAllStartMarkers(collection) {
     return markers;
 }
 
+async function getStartMarkerByID(collection, id) {
+    const o_id = ObjectId(id)
+    const data = await collection.findOne({'_id': o_id})
+    return data.markersArray[0]
+}
+
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
+module.exports.getStartMarkerByID = getStartMarkerByID;
