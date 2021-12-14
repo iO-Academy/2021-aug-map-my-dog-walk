@@ -1,16 +1,13 @@
-const express = require('express')
-const expressHandlebars = require('express-handlebars')
+const express = require('express');
 const router = require("./config/routes");
-const port = 3000
+const port = 3000;
+const cors = require('cors');
 
-app = express()
-
-app.engine('handlebars', expressHandlebars.engine())
-app.set('view engine', 'handlebars')
+app = express();
 
 app.use(express.json());
 app.use(express.static('public'));
+app.use(cors())
 
-router(app)
-
-app.listen(port)
+router(app);
+app.listen(port);
