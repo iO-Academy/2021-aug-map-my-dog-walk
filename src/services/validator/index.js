@@ -39,12 +39,13 @@ class Validator
 
     static validateIsAlphanumeric(string)
     {
-         return string.match(/^[a-zA-Z0-9_]*$/)
+        let regex = /^[a-z ,.'-]+$/i
+         return regex.test(string)
     }
 
     static validateHasLongitudeAndLatitude(object)
     {
-        return object.hasOwnProperty("longitude") && object.hasOwnProperty("latitude")
+        return object.hasOwnProperty("lng") && object.hasOwnProperty("lat")
     }
 
     static validateLatitude(lat)
@@ -52,9 +53,9 @@ class Validator
         return -90 <= lat <= 90
     }
 
-    static validateLongitude(lon)
+    static validateLongitude(lng)
     {
-        return -180 <= lon <= 180
+        return -180 <= lng <= 180
     }
 
     // Validation for specific fields
@@ -83,22 +84,22 @@ class Validator
     {
         if (this.validateIsArray(array)) {
             let isObj = true
-            let hasLongAndLat = false
-            let lon = true
+            let hasLngAndLat = true
+            let lng = true
             let lat = true
             array.forEach(marker => {
                 isObj = (isObj && this.validateIsObject(marker))
-                hasLongAndLat = (hasLongAndLat && this.validateHasLongitudeAndLatitude(marker))
-                lon = (lon && this.validateLongitude(lon))
-                lat = (lat && this.validateLongitude(lat))
+                hasLngAndLat = (hasLngAndLat && this.validateHasLongitudeAndLatitude(marker))
+                lng = (lng && this.validateLongitude(lng))
+                lat = (lat && this.validateLatitude(lat))
             })
-            return (isObj && hasLongAndLat && lon && lat)
+            return (isObj && hasLngAndLat && lng && lat)
         }
         return false
     }
 
     static validateNewWalk(newData) {
-         return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty)
+         return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateMarkersArray(newData.markersArray)
     }
 }
 
