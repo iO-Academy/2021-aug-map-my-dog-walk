@@ -15,7 +15,8 @@ async function getAllStartMarkers(collection) {
     data.forEach(function (walk) {
         markers.push({"name" : walk.name,
             "markersObject" : walk.markersArray[0],
-            "id": ObjectId(walk._id)
+            "id": ObjectId(walk._id),
+            "difficulty": walk.difficulty
         });
     })
     return markers;
