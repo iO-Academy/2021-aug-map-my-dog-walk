@@ -24,17 +24,17 @@ class Validator
 
      static validateShortStringLength(string)
      {
-         return 5 <= string.length <= 20
+         return 5 <= string.length && string.length <= 20
      }
 
     static validateLongStringLength(string)
     {
-        return 0 <= string.length <= 200
+        return 0 <= string.length && string.length <= 200
     }
 
     static validateTimeRange(time)
     {
-        return 0 <= time <= 500
+        return 0 <= time && time <= 500
     }
 
     static validateIsAlphanumeric(string)
@@ -50,12 +50,12 @@ class Validator
 
     static validateLatitude(lat)
     {
-        return -90 <= lat <= 90
+        return -90 <= lat && lat <= 90
     }
 
     static validateLongitude(lng)
     {
-        return -180 <= lng <= 180
+        return -180 <= lng && lat <= 180
     }
 
     // Validation for specific fields

@@ -3,6 +3,7 @@ const Validator = require("../../Services/Validator");
 
 async function addNewRouteController(request, response) {
     const collection = await DbService.connectToDb();
+    console.log({validate: Validator.validateNewWalk(request.body)})
     if (Validator.validateNewWalk(request.body)) {
         try {
             let attempt = DbService.addNewRoute(collection, request.body)
