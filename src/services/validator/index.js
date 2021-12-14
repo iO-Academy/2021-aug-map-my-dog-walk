@@ -14,12 +14,12 @@ class Validator
 
      static validateIsArray(array)
      {
-         return Array.isArray(array)
+         return Array.isArray(array) && array !== []
      }
 
      static validateIsObject(object)
      {
-         return typeof object === "object"
+         return typeof object === "object" && object !== {}
      }
 
      static validateShortStringLength(string)
@@ -96,4 +96,10 @@ class Validator
         }
         return false
     }
+
+    static validateNewWalk(newData) {
+         return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty)
+    }
 }
+
+module.exports = Validator;
