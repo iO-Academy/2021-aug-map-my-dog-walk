@@ -6,4 +6,11 @@ async function getAllStartMarkersController(request, response) {
     response.json(markers);
 }
 
+async function getStartMarkerByIDController(request, response) {
+    const collection = await DbService.connectToDb();
+    const marker = await DbService.getStartMarkerByID(collection, request.params.id);
+    response.json(marker);
+}
+
 module.exports.getAllStartMarkersController = getAllStartMarkersController
+module.exports.getStartMarkerByIDController = getStartMarkerByIDController
