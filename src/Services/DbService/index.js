@@ -4,8 +4,7 @@ const mongoConnection = 'mongodb://root:password@localhost:27017';
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
     const db = connection.db('canineCompass');
-    const collection = db.collection('dogWalks');
-    return collection;
+    return db.collection('dogWalks');
 }
 
 async function getAllStartMarkers(collection) {
@@ -17,5 +16,10 @@ async function getAllStartMarkers(collection) {
     return markers;
 }
 
+async function addNewRoute(collection, newData) {
+    return collection.insertOne(newData);
+}
+
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
+module.exports.addNewRoute = addNewRoute;
