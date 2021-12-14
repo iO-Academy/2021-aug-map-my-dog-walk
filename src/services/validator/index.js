@@ -55,7 +55,7 @@ class Validator
 
     static validateLongitude(lng)
     {
-        return -180 <= lng && lat <= 180
+        return -180 <= lng && lng <= 180
     }
 
     // Validation for specific fields
