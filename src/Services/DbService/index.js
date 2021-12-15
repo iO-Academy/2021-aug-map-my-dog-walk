@@ -5,8 +5,7 @@ const ObjectId = require('mongodb').ObjectId;
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
     const db = connection.db('canineCompass');
-    const collection = db.collection('dogWalks');
-    return collection;
+    return db.collection('dogWalks');
 }
 
 async function getAllStartMarkers(collection) {
@@ -27,6 +26,11 @@ async function getDogWalkInfo(collection, id) {
     return await collection.findOne({'_id': o_id})
 }
 
+async function addNewWalk(collection, newData) {
+    return collection.insertOne(newData);
+}
+
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
+module.exports.addNewWalk = addNewWalk;
