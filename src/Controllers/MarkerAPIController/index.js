@@ -6,4 +6,5 @@ async function getAllStartMarkersController(request, response) {
     response.json(markers);
 }
 
+
 module.exports.getAllStartMarkersController = getAllStartMarkersController
