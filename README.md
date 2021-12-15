@@ -11,9 +11,7 @@ Now import db/dogWalks.json into MongoDB Compass
 ----
 Adds a single new walk into the dogWalks collection
 
-* **URL**
-
-/walks
+* URL: `/walks`
 
 * **Method:**
 
@@ -41,7 +39,10 @@ Adds a single new walk into the dogWalks collection
 * **Success Response:**
 
     * **Code:** 201 <br />
-      **Content:** `{ id : 12 }`
+      **Content:** `{
+      "success": true,
+      "message": "New walk added!"
+      }`
 
 * **Error Response:**
 
@@ -53,13 +54,72 @@ Adds a single new walk into the dogWalks collection
 
   OR
 
-    * **Code:** 422 UNPROCESSABLE ENTRY <br />
-      **Content:** `{ error : "Email Invalid" }`
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{
+      "success": false,
+      "message": "Something went wrong!"
+      }`
 
 * **Sample Call:**
 
-  <_Just a sample call to your endpoint in a runnable format ($.ajax call or a curl request) - this makes life easier and more predictable._>
+```javascript
+fetch('http://localhost:3000/walks', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        name: "Nova's Walk",
+        length: 40,
+        difficulty: 3,
+        startInstructions: "Go left over the stile",
+        markersArray: [{
+            lat: 8.12132522887685, 
+            lng: -14.5299704759841
+        }]
+    })
+})
+  ```
 
-* **Notes:**
+**Get All Markers**
+----
+Returns an array of all markers currently in the database.
 
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._> 
+* URL: `/markers`
+
+* **Method:**
+
+  `GET`
+
+* **Success Response:**
+
+    * **Code:** 201 <br />
+      **Content:**
+    *  `{
+       success: true,
+       message: 'Successfully found markers',
+       data: [{
+       walkName: 'Novas Walk',
+       markersObject: { lat: 8.1213, lng: -14.529 },
+       id: new ObjectId("XXX")
+       }`
+    
+* **Error Response:**
+
+    * **Code:** 400 BAD REQUEST <br />
+      **Content:** `{
+      success: false,
+      message: 'No markers returned :(',
+      data: []
+      }`
+
+
+* **Sample Call:**
+
+```javascript
+fetch('http://localhost:3000/markers', {
+    method: 'GET',
+    headers: {'Content-Type': 'application/json'}
+})
+  ```
+
+
+
