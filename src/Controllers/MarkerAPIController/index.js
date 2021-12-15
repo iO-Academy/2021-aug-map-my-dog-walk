@@ -27,7 +27,7 @@ async function getDogWalkInfoController(request, response) {
 
 async function addAdditionalRouteMarkersController(request, response) {
     const collection = await DbService.connectToDb();
-    await DbService.addAdditionalRouteMarkers(collection, id, request.params.markersArray);
+    await DbService.addAdditionalRouteMarkers(collection, request.params.id, request.params.markersArray);
 }
 
 module.exports.getAllStartMarkersController = getAllStartMarkersController;

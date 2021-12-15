@@ -10,7 +10,7 @@ function routes(app){
     app.delete('/markers', ErrorController);
 
     app.get('/markers/:id', MarkerAPIController.getDogWalkInfoController);
-    app.put('/markers/:id', MarkersAPIController.addAdditionalRouteMarkers);
+    app.put('/markers/:id', MarkerAPIController.addAdditionalRouteMarkersController);
 }
 
 module.exports = routes;
