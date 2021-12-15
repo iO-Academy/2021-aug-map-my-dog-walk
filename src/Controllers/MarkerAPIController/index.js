@@ -1,5 +1,4 @@
 const DbService = require("../../Services/DbService");
-const {addAdditionalRouteMarkers} = require("../../Services/DbService");
 
 async function getAllStartMarkersController(request, response) {
     const collection = await DbService.connectToDb();
