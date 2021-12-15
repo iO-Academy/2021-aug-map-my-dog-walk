@@ -26,9 +26,9 @@ async function getDogWalkInfo(collection, id) {
 }
 
 async function addAdditionalRouteMarkers(collection, id, newMarkersArray) {
-    const o_id = ObjectId(id);
-    const oldData = await collection.findOne({'_id': o_id});
+    const oldData = getDogWalkInfo(collection, id);
     const oldMarkersArray = oldData.markersArray;
+
     const updatedMarkersArray = [...oldMarkersArray,...newMarkersArray];
     await collection.updateOne({'_id': o_id}, {'markersArray': updatedMarkersArray});
 }
