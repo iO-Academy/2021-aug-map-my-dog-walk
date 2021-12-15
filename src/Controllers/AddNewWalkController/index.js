@@ -3,6 +3,7 @@ const WalkValidator = require("../../Services/WalkValidator");
 
 async function addNewWalkController(request, response) {
     const collection = await DbService.connectToDb();
+     console.log( request )
     if (WalkValidator.validateNewWalk(request.body)) {
         try {
             DbService.addNewWalk(collection, request.body)
@@ -24,4 +25,4 @@ async function addNewWalkController(request, response) {
     }
 }
 
-module.exports.addNewWalkController = addNewWalkController
+module.exports = addNewWalkController

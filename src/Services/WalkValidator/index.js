@@ -59,7 +59,12 @@ class WalkValidator
     }
 
     static validateNewWalk(newData) {
-        return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateMarkersArray(newData.markersArray)
+        // console.log({name: this.validateName(newData.name)})
+        // console.log({length: this.validateWalkLength(newData.length)})
+        // console.log({difficulty: this.validateDifficulty(newData.difficulty)})
+        // console.log({markers: this.validateMarkersArray(newData.markersArray)})
+        // console.log({instructions: this.validateStartInstructions(newData.startInstructions)})
+        return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateStartInstructions(newData.startInstructions) && this.validateMarkersArray(newData.markersArray)
     }
 }
 
