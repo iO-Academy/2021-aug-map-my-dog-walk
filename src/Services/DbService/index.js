@@ -26,6 +26,12 @@ async function getDogWalkInfo(collection, id) {
     return await collection.findOne({'_id': o_id})
 }
 
+async function editWalkMarkers(collection, id, data){
+    const o_id = ObjectId(id)
+    return await collection.updateOne({'_id': o_id}, { $set: {markersArray: data}})
+}
+
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
+module.exports.editWalkMarkers = editWalkMarkers
