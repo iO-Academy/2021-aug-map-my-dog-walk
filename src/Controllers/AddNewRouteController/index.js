@@ -1,9 +1,10 @@
 const DbService = require("../../Services/DbService");
 const Validator = require("../../Services/Validator");
+const WalkValidator = require("../../Services/WalkValidator");
 
 async function addNewRouteController(request, response) {
     const collection = await DbService.connectToDb();
-    if (Validator.validateNewWalk(request.body)) {
+    if (WalkValidator.validateNewWalk(request.body)) {
         try {
             DbService.addNewRoute(collection, request.body)
             return response.status(201).json({
