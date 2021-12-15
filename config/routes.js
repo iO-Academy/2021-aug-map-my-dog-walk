@@ -1,7 +1,6 @@
-
 const MarkerAPIController = require("../src/Controllers/MarkerAPIController");
 const AddNewRouteController = require("../src/Controllers/AddNewWalkController");
-const ErrorController = require("../src/Controllers/ErrorController")
+const ErrorController = require("../src/Controllers/ErrorController");
 
 function routes(app){
     app.get('/markers', MarkerAPIController.getAllStartMarkersController);
