@@ -5,16 +5,15 @@ const ObjectId = require('mongodb').ObjectId;
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
     const db = connection.db('canineCompass');
-    const collection = db.collection('dogWalks');
-    return collection;
+    return db.collection('dogWalks');
 }
 
 async function getAllStartMarkers(collection) {
     const data = await collection.find({}).toArray();
     let markers = [];
     data.forEach(function (walk) {
-        markers.push({"name" : walk.name,
-            "markersObject" : walk.markersArray[0],
+        markers.push({"walkName" : walk.name,
+            "markersObject" : {"lat": walk.markersArray[0].lat, "lng": walk.markersArray[0].lng},
             "id": ObjectId(walk._id)
         });
     })
@@ -26,6 +25,11 @@ async function getDogWalkInfo(collection, id) {
     return await collection.findOne({'_id': o_id})
 }
 
+async function addNewWalk(collection, newData) {
+    return collection.insertOne(newData);
+}
+
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
+module.exports.addNewWalk = addNewWalk;
