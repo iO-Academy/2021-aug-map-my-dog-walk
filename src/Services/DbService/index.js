@@ -5,8 +5,7 @@ const ObjectId = require('mongodb').ObjectId;
 async function connectToDb() {
     const connection = await MongoClient.connect(mongoConnection);
     const db = connection.db('canineCompass');
-    const collection = db.collection('dogWalks');
-    return collection;
+    return db.collection('dogWalks');
 }
 
 async function getAllStartMarkers(collection) {
@@ -22,8 +21,19 @@ async function getAllStartMarkers(collection) {
 }
 
 async function getDogWalkInfo(collection, id) {
-    const o_id = ObjectId(id)
-    return await collection.findOne({'_id': o_id})
+    const o_id = ObjectId(id);
+    return await collection.findOne({'_id': o_id});
+}
+
+async function addAdditionalRouteMarkers(collection, id, newMarkersArray) {
+    const oldData = getDogWalkInfo(collection, id);
+    const oldMarkersArray = oldData.markersArray;
+    const updatedMarkersArray = [...oldMarkersArray,...newMarkersArray];
+    await collection.updateOne({'_id': o_id}, {'markersArray': updatedMarkersArray});
+}
+
+async function addNewWalk(collection, newData) {
+    return collection.insertOne(newData);
 }
 
 async function editWalkMarkers(collection, id, data){
@@ -34,4 +44,6 @@ async function editWalkMarkers(collection, id, data){
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
-module.exports.editWalkMarkers = editWalkMarkers
+module.exports.addAdditionalRouteMarkers = addAdditionalRouteMarkers;
+module.exports.addNewWalk = addNewWalk;
+

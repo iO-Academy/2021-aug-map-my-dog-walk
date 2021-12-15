@@ -4,7 +4,19 @@ const express = require("express");
 async function getAllStartMarkersController(request, response) {
     const collection = await DbService.connectToDb();
     const markers = await DbService.getAllStartMarkers(collection);
-    response.json(markers);
+    if (markers.length !== 0) {
+        response.json({
+            success: true,
+            message: 'Successfully found markers',
+            data: markers
+        });
+    } else {
+        response.json({
+            success: false,
+            message: 'No markers returned :(',
+            data: markers
+        });
+    }
 }
 
 async function getDogWalkInfoController(request, response) {
@@ -13,13 +25,13 @@ async function getDogWalkInfoController(request, response) {
     response.json(dogWalkInfo);
 }
 
-async function editWalkMarkersController(request, response){
+
+async function addAdditionalRouteMarkersController(request, response) {
     const collection = await DbService.connectToDb();
-    const dogWalkInfo = await DbService.editWalkMarkers(collection, request.params.id, request.body);
-    response.json(dogWalkInfo);
+    await DbService.addAdditionalRouteMarkers(collection, request.params.id, request.params.markersArray);
 }
 
+module.exports.getAllStartMarkersController = getAllStartMarkersController;
+module.exports.getDogWalkInfoController = getDogWalkInfoController;
+module.exports.addAdditionalRouteMarkersController = addAdditionalRouteMarkersController;
 
-module.exports.getAllStartMarkersController = getAllStartMarkersController
-module.exports.getDogWalkInfoController = getDogWalkInfoController
-module.exports.editWalkMarkersController = editWalkMarkersController
