@@ -14,7 +14,7 @@ class Validator
 
      static validateIsArray(array)
      {
-         return Array.isArray(array) && array !== []
+         return (Array.isArray(array) && (array.length !== 0))
      }
 
      static validateIsObject(object)

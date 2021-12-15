@@ -21,12 +21,12 @@ class WalkValidator
     // Validation for specific fields
     static validateName(name)
     {
-        return Validator.validateIsString(name) && Validator.validateShortStringLength(name) && Validator.validateIsAlphanumeric(name)
+        return (Validator.validateIsString(name) && Validator.validateShortStringLength(name) && Validator.validateIsAlphanumeric(name))
     }
 
     static validateWalkLength(length)
     {
-        return Validator.validateIsNumber(length) && Validator.validateTimeRange(length)
+        return Validator.validateIsNumber(parseInt(length)) && Validator.validateTimeRange(length)
     }
 
     static validateStartInstructions(instructions)
@@ -37,7 +37,7 @@ class WalkValidator
     static validateDifficulty(difficulty)
     {
         const validDifficulties = [1, 2, 3, 4, 5]
-        return validDifficulties.includes(difficulty, 0)
+        return validDifficulties.includes(parseInt(difficulty), 0)
     }
 
     static validateMarkersArray(array)
@@ -59,11 +59,6 @@ class WalkValidator
     }
 
     static validateNewWalk(newData) {
-        // console.log({name: this.validateName(newData.name)})
-        // console.log({length: this.validateWalkLength(newData.length)})
-        // console.log({difficulty: this.validateDifficulty(newData.difficulty)})
-        // console.log({markers: this.validateMarkersArray(newData.markersArray)})
-        // console.log({instructions: this.validateStartInstructions(newData.startInstructions)})
         return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateStartInstructions(newData.startInstructions) && this.validateMarkersArray(newData.markersArray)
     }
 }
