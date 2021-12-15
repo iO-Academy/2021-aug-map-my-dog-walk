@@ -1,4 +1,6 @@
 
+const Validator = require("../../Services/Validator");
+
 class WalkValidator
 {
     static validateHasLongitudeAndLatitude(object)
@@ -19,17 +21,17 @@ class WalkValidator
     // Validation for specific fields
     static validateName(name)
     {
-        return this.validateIsString(name) && this.validateShortStringLength(name) && this.validateIsAlphanumeric(name)
+        return Validator.validateIsString(name) && Validator.validateShortStringLength(name) && Validator.validateIsAlphanumeric(name)
     }
 
     static validateWalkLength(length)
     {
-        return this.validateIsNumber(length) && this.validateTimeRange(length)
+        return Validator.validateIsNumber(length) && Validator.validateTimeRange(length)
     }
 
     static validateStartInstructions(instructions)
     {
-        return this.validateIsString(instructions) && this.validateLongStringLength(instructions) && this.validateIsAlphanumeric(instructions)
+        return Validator.validateIsString(instructions) && Validator.validateLongStringLength(instructions) && Validator.validateIsAlphanumeric(instructions)
     }
 
     static validateDifficulty(difficulty)
@@ -40,13 +42,13 @@ class WalkValidator
 
     static validateMarkersArray(array)
     {
-        if (this.validateIsArray(array)) {
+        if (Validator.validateIsArray(array)) {
             let isObj = true
             let hasLngAndLat = true
             let lng = true
             let lat = true
             array.forEach(marker => {
-                isObj = (isObj && this.validateIsObject(marker))
+                isObj = (isObj && Validator.validateIsObject(marker))
                 hasLngAndLat = (hasLngAndLat && this.validateHasLongitudeAndLatitude(marker))
                 lng = (lng && this.validateLongitude(lng))
                 lat = (lat && this.validateLatitude(lat))
@@ -60,4 +62,5 @@ class WalkValidator
         return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateMarkersArray(newData.markersArray)
     }
 }
+
 module.exports = WalkValidator;

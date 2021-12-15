@@ -20,10 +20,10 @@ async function getAllStartMarkers(collection) {
     return markers;
 }
 
-async function addNewRoute(collection, newData) {
+async function addNewWalk(collection, newData) {
     return collection.insertOne(newData);
 }
 
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
-module.exports.addNewRoute = addNewRoute;
+module.exports.addNewWalk = addNewWalk;

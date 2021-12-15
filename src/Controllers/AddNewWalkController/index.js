@@ -1,15 +1,14 @@
 const DbService = require("../../Services/DbService");
-const Validator = require("../../Services/Validator");
 const WalkValidator = require("../../Services/WalkValidator");
 
-async function addNewRouteController(request, response) {
+async function addNewWalkController(request, response) {
     const collection = await DbService.connectToDb();
     if (WalkValidator.validateNewWalk(request.body)) {
         try {
-            DbService.addNewRoute(collection, request.body)
+            DbService.addNewWalk(collection, request.body)
             return response.status(201).json({
                 success: true,
-                message: "Route added"
+                message: "New walk added!"
                 });
         } catch {
             return response.status(400).json({
@@ -20,9 +19,9 @@ async function addNewRouteController(request, response) {
     } else {
         return response.status(400).json({
             success: false,
-            message: 'Validation failed'
+            message: 'Validation failed :( Check your input!'
         })
     }
 }
 
-module.exports.addNewRouteController = addNewRouteController
+module.exports.addNewWalkController = addNewWalkController
