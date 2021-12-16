@@ -1,4 +1,3 @@
-
 const Validator = require("../../Services/Validator");
 
 class WalkValidator
@@ -47,6 +46,7 @@ class WalkValidator
 
     static validateMarkersArray(array)
     {
+        console.log(array)
         if (Validator.validateIsArray(array)) {
             let isObj = true
             let hasPosition = true
