@@ -21,7 +21,19 @@ async function getAllStartMarkersController(request, response) {
 async function getDogWalkInfoController(request, response) {
     const collection = await DbService.connectToDb();
     const dogWalkInfo = await DbService.getDogWalkInfo(collection, request.params.id);
-    response.json(dogWalkInfo);
+    if (JSON.stringify(dogWalkInfo) !== '{}') {
+        response.json({
+            success: true,
+            message: 'Successfully found dog walk info',
+            data: dogWalkInfo
+        });
+    } else {
+        response.json({
+            success: false,
+            message: 'No dog walk info found :(',
+            data: dogWalkInfo
+        });
+    }
 }
 
 module.exports.getAllStartMarkersController = getAllStartMarkersController;
