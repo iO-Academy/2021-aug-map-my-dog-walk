@@ -12,4 +12,60 @@
       "lng": -1.466667
     }
   ]
+},{
+  "_id": {
+    "$oid": "61b8a28c3d78960b5f7dd717"
+  },
+  "name": "Ellie's walk",
+  "length": 20,
+  "startInstructions": "walk forwards",
+  "difficulty": 2,
+  "markersArray": [
+    {
+      "lat": 51.50853,
+      "lng": -0.12574
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61b8a3073d78960b5f7dd718"
+  },
+  "name": "Damo's walk",
+  "length": 5,
+  "startInstructions": "go",
+  "difficulty": 1,
+  "markersArray": [
+    {
+      "lat": 48.864716,
+      "lng": 2.349014
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61b8a37e3d78960b5f7dd71a"
+  },
+  "name": "Will's walk",
+  "length": 90,
+  "startInstructions": "bring the dog",
+  "difficulty": 4,
+  "markersArray": [
+    {
+      "lat": 52.520008,
+      "lng": 13.404954
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "61b8a4603d78960b5f7dd71b"
+  },
+  "name": "Jake's walk",
+  "length": 50,
+  "startInstrcutions": "squat up",
+  "difficulty": 5,
+  "markersArray": [
+    {
+      "lat": 53.35014,
+      "lng": -6.266155
+    }
+  ]
 }]
