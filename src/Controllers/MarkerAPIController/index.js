@@ -22,10 +22,10 @@ async function getAllStartMarkersController(request, response) {
 async function getDogWalkInfoController(request, response) {
     const collection = await DbService.connectToDb();
     const dogWalkInfo = await DbService.getDogWalkInfo(collection, request.params.id);
-    if (dogWalkInfo) {
+    if (JSON.stringify(dogWalkInfo) !== '{}') {
         response.json({
             success: true,
-            message: 'Successfully found marker',
+            message: 'Successfully found dog walk info',
             data: dogWalkInfo
         });
     } else {
