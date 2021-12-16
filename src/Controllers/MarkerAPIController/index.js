@@ -1,5 +1,4 @@
 const DbService = require("../../Services/DbService");
-const express = require("express");
 
 async function getAllStartMarkersController(request, response) {
     const collection = await DbService.connectToDb();
@@ -31,7 +30,7 @@ async function getDogWalkInfoController(request, response) {
     } else {
         response.json({
             success: false,
-            message: 'No marker returned :(',
+            message: 'No dog walk info found :(',
             data: dogWalkInfo
         });
     }
