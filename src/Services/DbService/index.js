@@ -22,8 +22,8 @@ async function getAllStartMarkers(collection) {
 }
 
 async function getDogWalkInfo(collection, id) {
-    const o_id = ObjectId(id)
-    return await collection.findOne({'_id': o_id})
+    const o_id = ObjectId(id);
+    return await collection.findOne({'_id': o_id});
 }
 
 async function addNewWalk(collection, newData) {

@@ -26,4 +26,3 @@ async function getDogWalkInfoController(request, response) {
 
 module.exports.getAllStartMarkersController = getAllStartMarkersController;
 module.exports.getDogWalkInfoController = getDogWalkInfoController;
-
