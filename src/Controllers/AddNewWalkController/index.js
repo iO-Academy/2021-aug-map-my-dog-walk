@@ -24,4 +24,4 @@ async function addNewWalkController(request, response) {
     }
 }
 
-module.exports.addNewWalkController = addNewWalkController
+module.exports = addNewWalkController

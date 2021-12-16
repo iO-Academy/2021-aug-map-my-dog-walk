@@ -12,7 +12,8 @@ async function getAllStartMarkers(collection) {
     const data = await collection.find({}).toArray();
     let markers = [];
     data.forEach(function (walk) {
-        markers.push({"name" : walk.name,
+        markers.push({
+            "walkName" : walk.name,
             "markersObject" : walk.markersArray[0],
             "id": ObjectId(walk._id)
         });
