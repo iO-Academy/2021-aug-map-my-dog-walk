@@ -10,12 +10,11 @@ function routes(app){
     app.delete('/markers', ErrorController);
 
     app.get('/markers/:id', MarkerAPIController.getDogWalkInfoController);
-
-    app.get('/markers/:id', MarkerAPIController.getDogWalkInfoController);
     app.post('/markers/:id', ErrorController);
     app.put('/markers/:id', MarkerAPIController.addAdditionalRouteMarkersController);
     app.delete('/markers/:id', ErrorController);
-
+    
+    app.get('/markers/difficultyFilter/:difficulty?/timeFilter/:time?', MarkerAPIController.getFilteredMarkersController);
 
     app.get('/walks', ErrorController);
     app.post('/walks', AddNewWalkController);

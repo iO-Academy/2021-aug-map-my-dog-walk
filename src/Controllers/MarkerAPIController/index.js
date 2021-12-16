@@ -44,7 +44,27 @@ async function addAdditionalRouteMarkersController(request, response) {
     response.json(data)
 }
 
+async function getFilteredMarkersController(request, response) {
+    const collection = await DbService.connectToDb();
+    let filteredMarkers = await DbService.getFilteredMarkers(collection, request.params.difficulty, request.params.time);
+
+    if (filteredMarkers.length !== 0) {
+        response.json({
+            success: true,
+            message: 'Successfully found filtered markers',
+            data: filteredMarkers
+        });
+    } else {
+        response.json({
+            success: false,
+            message: 'No filtered markers returned :(',
+            data: filteredMarkers
+        });
+    }
+}
+
 module.exports.getAllStartMarkersController = getAllStartMarkersController;
 module.exports.getDogWalkInfoController = getDogWalkInfoController;
 module.exports.addAdditionalRouteMarkersController = addAdditionalRouteMarkersController;
+module.exports.getFilteredMarkersController = getFilteredMarkersController;
 
