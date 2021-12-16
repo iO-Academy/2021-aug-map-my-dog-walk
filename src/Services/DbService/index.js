@@ -20,10 +20,16 @@ async function getAllStartMarkers(collection) {
     return markers;
 }
 
+async function getDogWalkInfo(collection, id) {
+    const o_id = ObjectId(id)
+    return await collection.findOne({'_id': o_id})
+}
+
 async function addNewWalk(collection, newData) {
     return collection.insertOne(newData);
 }
 
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
+module.exports.getDogWalkInfo = getDogWalkInfo;
 module.exports.addNewWalk = addNewWalk;
