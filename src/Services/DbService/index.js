@@ -26,6 +26,14 @@ async function getDogWalkInfo(collection, id) {
     return await collection.findOne({'_id': o_id});
 }
 
+async function addAdditionalRouteMarkers(collection, id, newMarkersArray) {
+    const o_id = ObjectId(id);
+    const oldData = await collection.findOne({'_id': o_id});
+    const oldMarkersArray = oldData.markersArray;
+    const updatedMarkersArray = [...oldMarkersArray, ...newMarkersArray];
+    return await collection.updateOne({'_id': o_id}, {$set: {'markersArray': updatedMarkersArray}});
+}
+
 async function addNewWalk(collection, newData) {
     return collection.insertOne(newData);
 }
@@ -34,3 +42,5 @@ module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
 module.exports.addNewWalk = addNewWalk;
+module.exports.addAdditionalRouteMarkers = addAdditionalRouteMarkers;
+
