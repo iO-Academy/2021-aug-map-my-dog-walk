@@ -12,7 +12,7 @@ async function getAllStartMarkers(collection) {
     const data = await collection.find({}).toArray();
     let markers = [];
     data.forEach(function (walk) {
-        markers.push({"name" : walk.name,
+        markers.push({"walkName" : walk.name,
             "markersObject" : walk.markersArray[0],
             "id": ObjectId(walk._id),
             "difficulty": walk.difficulty
@@ -26,6 +26,12 @@ async function getDogWalkInfo(collection, id) {
     return await collection.findOne({'_id': o_id});
 }
 
+
+async function addAdditionalRouteMarkers(collection, id, newMarkersArray) {
+    const o_id = ObjectId(id);
+    return await collection.updateOne({'_id': o_id}, {$push: {'markersArray': {$each: newMarkersArray}}});
+}
+
 async function addNewWalk(collection, newData) {
     return collection.insertOne(newData);
 }
@@ -33,4 +39,6 @@ async function addNewWalk(collection, newData) {
 module.exports.connectToDb = connectToDb;
 module.exports.getAllStartMarkers = getAllStartMarkers;
 module.exports.getDogWalkInfo = getDogWalkInfo;
+module.exports.addAdditionalRouteMarkers = addAdditionalRouteMarkers;
 module.exports.addNewWalk = addNewWalk;
+

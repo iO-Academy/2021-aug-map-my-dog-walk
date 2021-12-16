@@ -1,4 +1,5 @@
 const DbService = require("../../Services/DbService");
+const express = require("express");
 
 async function getAllStartMarkersController(request, response) {
     const collection = await DbService.connectToDb();
@@ -30,11 +31,20 @@ async function getDogWalkInfoController(request, response) {
     } else {
         response.json({
             success: false,
-            message: 'No dog walk info found :(',
+            message: 'No marker returned :(',
             data: dogWalkInfo
         });
     }
 }
 
+
+async function addAdditionalRouteMarkersController(request, response) {
+    const collection = await DbService.connectToDb();
+    let data = await DbService.addAdditionalRouteMarkers(collection, request.params.id, request.body);
+    response.json(data)
+}
+
 module.exports.getAllStartMarkersController = getAllStartMarkersController;
 module.exports.getDogWalkInfoController = getDogWalkInfoController;
+module.exports.addAdditionalRouteMarkersController = addAdditionalRouteMarkersController;
+

@@ -8,6 +8,11 @@ class WalkValidator
         return object.hasOwnProperty("lng") && object.hasOwnProperty("lat")
     }
 
+    static validatePosition(object)
+    {
+        return object.hasOwnProperty("position") && this.validateHasLongitudeAndLatitude(object.position)
+    }
+
     static validateLatitude(lat)
     {
         return -90 <= lat && lat <= 90
@@ -44,16 +49,16 @@ class WalkValidator
     {
         if (Validator.validateIsArray(array)) {
             let isObj = true
-            let hasLngAndLat = true
+            let hasPosition = true
             let lng = true
             let lat = true
             array.forEach(marker => {
                 isObj = (isObj && Validator.validateIsObject(marker))
-                hasLngAndLat = (hasLngAndLat && this.validateHasLongitudeAndLatitude(marker))
-                lng = (lng && this.validateLongitude(lng))
-                lat = (lat && this.validateLatitude(lat))
+                hasPosition = (hasPosition && this.validatePosition(marker))
+                lng = (lng && this.validateLongitude(marker.position.lng))
+                lat = (lat && this.validateLatitude(marker.position.lat))
             })
-            return (isObj && hasLngAndLat && lng && lat)
+            return (isObj && hasPosition && lng && lat)
         }
         return false
     }
