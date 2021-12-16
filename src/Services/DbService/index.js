@@ -32,7 +32,7 @@ async function addAdditionalRouteMarkers(collection, id, newMarkersArray) {
 }
 
 async function addNewWalk(collection, newData) {
-    return collection.insertOne(newData);
+    return await collection.insertOne(newData);
 }
 
 module.exports.connectToDb = connectToDb;
