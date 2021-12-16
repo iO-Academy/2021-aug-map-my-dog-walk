@@ -1,4 +1,3 @@
-
 const Validator = require("../../Services/Validator");
 
 class WalkValidator
@@ -24,9 +23,9 @@ class WalkValidator
     }
 
     // Validation for specific fields
-    static validateName(name)
+    static validateName(walkName)
     {
-        return (Validator.validateIsString(name) && Validator.validateShortStringLength(name) && Validator.validateIsAlphanumeric(name))
+        return (Validator.validateIsString(walkName) && Validator.validateShortStringLength(walkName) && Validator.validateIsAlphanumeric(walkName))
     }
 
     static validateWalkLength(length)
@@ -47,6 +46,7 @@ class WalkValidator
 
     static validateMarkersArray(array)
     {
+        console.log(array)
         if (Validator.validateIsArray(array)) {
             let isObj = true
             let hasPosition = true
@@ -64,7 +64,7 @@ class WalkValidator
     }
 
     static validateNewWalk(newData) {
-        return this.validateName(newData.name) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateStartInstructions(newData.startInstructions) && this.validateMarkersArray(newData.markersArray)
+        return this.validateName(newData.walkName) && this.validateWalkLength(newData.length) && this.validateDifficulty(newData.difficulty) && this.validateStartInstructions(newData.startInstructions) && this.validateMarkersArray(newData.markersArray)
     }
 }
 
